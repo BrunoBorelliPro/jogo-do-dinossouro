@@ -1,5 +1,5 @@
 let score = 0
-
+let timeDifficult = 1000
 
 const player = document.querySelector(".player")
 const background = document.querySelector(".background")
@@ -63,7 +63,7 @@ function pular(){
 function createCactus(){
     const cactus = document.createElement('div')
     let cactusPosition = 1000
-    let randowTime = Math.floor(Math.random()*5000) + 1000
+    let randowTime = Math.floor(Math.random()*5000) + timeDifficult
     cactus.classList.add('cactus')
     cactus.style.left = 1000 + 'px'
     background.appendChild(cactus)
@@ -75,6 +75,8 @@ function createCactus(){
             clearInterval(leftInterval)
             background.removeChild(cactus)
             score++
+            horizontalVelocity++
+            timeDifficult -= 200
             atualizaScore(score)
         }else if(cactusPosition>0 && cactusPosition < 60 && position < 60){
             clearInterval(leftInterval)
